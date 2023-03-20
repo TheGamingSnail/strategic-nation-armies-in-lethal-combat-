@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ProjectileAimTest : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class ProjectileAimTest : MonoBehaviour
 
     public void FireLauncher()
     {
-        float distance = Vector3.Distance(transform.position, target.position);
+        NavMeshAgent navMA = target.GetComponent<NavMeshAgent>();
+        float distance = Vector3.Distance(transform.position, target.position + target.forward * navMA.speed);
 
         float velocity = distance / (Mathf.Sin(2 * angle * Mathf.Deg2Rad) / Physics.gravity.magnitude);
 

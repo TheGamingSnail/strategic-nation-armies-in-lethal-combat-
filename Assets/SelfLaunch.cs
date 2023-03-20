@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SelfLaunch : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class SelfLaunch : MonoBehaviour
 
     private void Start()
     {
-        float distance = Vector3.Distance(transform.position, target.position);
+        NavMeshAgent navMA = target.GetComponent<NavMeshAgent>();
+        float distance = Vector3.Distance(transform.position, target.position + target.forward * navMA.speed);
 
         float velocity = distance / (Mathf.Sin(2 * angle * Mathf.Deg2Rad) / Physics.gravity.magnitude);
 
