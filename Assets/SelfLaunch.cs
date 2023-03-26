@@ -7,6 +7,7 @@ public class SelfLaunch : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform target;
+    [SerializeField] private string findName = "spear";
     [SerializeField] private float angle;
 
     private void Start()
@@ -27,7 +28,12 @@ public class SelfLaunch : MonoBehaviour
 
         projectile.transform.Rotate(-angle, projectile.transform.rotation.y, projectile.transform.rotation.z);
 
-        Rigidbody rb = projectile.transform.Find("spear").gameObject.AddComponent<Rigidbody>();
+        Rigidbody rb = projectile.transform.Find(findName).gameObject.AddComponent<Rigidbody>();
+        BottleSpin spin = projectile.transform.Find(findName).gameObject.GetComponent<BottleSpin>();
+        if (spin)
+        {
+            spin.enabled = true;
+        }
         rb.velocity = new Vector3(xVelocity * direction.x, yVelocity, xVelocity * direction.z);
     }
 }

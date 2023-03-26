@@ -8,10 +8,12 @@ public class Target : MonoBehaviour
     [SerializeField] private float tpCooldown;
     private float nextTpTime;
     private AINav navCode;
+    private float maxHealth;
 
     private void Start()
     {
         navCode = gameObject.GetComponent<AINav>();
+        maxHealth = health;
     }
     public void TakeDamage (float amount)
     {
@@ -30,6 +32,10 @@ public class Target : MonoBehaviour
                 navCode.Teleport();
                 nextTpTime = Time.time + tpCooldown;
             }
+        }
+        if (health >= maxHealth)
+        {
+            health = maxHealth;
         }
     }
 
