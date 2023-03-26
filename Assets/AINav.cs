@@ -8,6 +8,7 @@ public class AINav : MonoBehaviour
     private bool foundEnemy;
     private bool attacking;
     [SerializeField] private bool isMelee = true;
+    [SerializeField] private bool attacksOwnTeam = false;
     [SerializeField] private float range = 50f;
     [SerializeField] private float attackTime = 1f;
     [SerializeField] private float checkTime = 1f;
@@ -36,6 +37,7 @@ public class AINav : MonoBehaviour
     // Update is called once per frame
     void navUpdate()
     {
+        Debug.DrawLine(transform.position, navMeshAgent.destination, Color.red);
         if (!attBuilding)
         {
             navMeshAgent.isStopped = false;
@@ -65,7 +67,7 @@ public class AINav : MonoBehaviour
                     {
                         if (hit.transform.GetComponent<Target>())
                         {
-                            if (transform.tag != hit.transform.tag)
+                            if (transform.tag != hit.transform.tag || attacksOwnTeam)
                             {
                                 navMeshAgent.destination = transform.position;
                                 attacking = true;
@@ -206,25 +208,32 @@ public class AINav : MonoBehaviour
     public GameObject FindClosestEnemy()
     {
         GameObject[] gos;
-        if (gameObject.tag == "Red")
+        if (gameObject.tag == "Red" && !attacksOwnTeam)
         {
             gos = GameObject.FindGameObjectsWithTag("Blue");
         }
-        else 
+        else if (gameObject.tag == "Blue" && !attacksOwnTeam)
         {
             gos = GameObject.FindGameObjectsWithTag("Red");
+        }
+        else
+        {
+            gos = GameObject.FindGameObjectsWithTag(gameObject.tag);
         }
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
         foreach (GameObject go in gos)
         {
+            if (go != gameObject)
+            {
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;
             if (curDistance < distance && go.GetComponent<Target>())
             {
                 closest = go;
                 distance = curDistance;
+            }
             }
         }
         if (!closest)

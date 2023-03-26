@@ -5484,6 +5484,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8027402728851282650, guid: faf48d703ba91ac439c4fa8ff1d90863, type: 3}
+      propertyPath: isGay
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faf48d703ba91ac439c4fa8ff1d90863, type: 3}
 --- !u!1 &539517752
@@ -16883,7 +16887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8113297502134436501}
   m_Layer: 0
-  m_Name: Blue Spear Thrower
+  m_Name: Blue Kvass Thrower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16903,6 +16907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_: {fileID: 0}
   isMelee: 0
+  attacksOwnTeam: 1
   range: 50
   attackTime: 3
   checkTime: 1
