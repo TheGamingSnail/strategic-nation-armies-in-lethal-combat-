@@ -140,14 +140,17 @@ public class AINav : MonoBehaviour
 
             else if (Time.time >= time && attBuilding && !isMelee && !rpgFirePos && heldThrowable)
             {
-                time = Time.time + attackTime;
-                SelfLaunch throwable = heldThrowable.GetComponent<SelfLaunch>();
-                throwable.target = attBuilding.transform;
-                GameObject newThrowable = Instantiate(throwablePrefab, heldThrowable.transform.position, heldThrowable.transform.rotation);
-                newThrowable.transform.parent = heldThrowable.transform.parent;
-                heldThrowable.transform.parent = null;
-                throwable.enabled = true;
-                heldThrowable = newThrowable;
+                if (attBuilding.GetComponent<UnityEngine.AI.NavMeshAgent>())
+                {
+                    time = Time.time + attackTime;
+                    SelfLaunch throwable = heldThrowable.GetComponent<SelfLaunch>();
+                    throwable.target = attBuilding.transform;
+                    GameObject newThrowable = Instantiate(throwablePrefab, heldThrowable.transform.position, heldThrowable.transform.rotation);
+                    newThrowable.transform.parent = heldThrowable.transform.parent;
+                    heldThrowable.transform.parent = null;
+                    throwable.enabled = true;
+                    heldThrowable = newThrowable;
+                }
             }
             
             if (!attBuilding && FindClosestEnemy() && !isMelee)
