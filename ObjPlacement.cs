@@ -15,6 +15,8 @@ public class ObjPlacement : MonoBehaviour
     public bool isPlaceable = true;
     Vector3 pos;
     private RaycastHit hit;
+
+    private MeshRenderer[] child_mesh;
     [SerializeField] private LayerMask layerMask;
     // Start is called before the first frame update
     void Start()
@@ -115,37 +117,18 @@ public class ObjPlacement : MonoBehaviour
     {
         if (isPlaceable)
         {
-            MeshRenderer child_mesh = pendingObject.GetComponentInChildren<MeshRenderer>();
-            child_mesh.material = mats[0];
+            child_mesh = pendingObject.GetComponentsInChildren<MeshRenderer>();
+            foreach(MeshRenderer mesh in child_mesh)
+            {
+                mesh.material = mats[0];
+            }
         }
         else
         {
-            MeshRenderer child_mesh = pendingObject.GetComponentInChildren<MeshRenderer>();
-            child_mesh.material = mats[1];
-        }
-    }
-
-     private List<GameObject> AllChilds(GameObject root)
-    {
-        List<GameObject> result = new List<GameObject>();
-        if (root.transform.childCount > 0)
-        {
-            foreach (Transform child in root.transform)
+            child_mesh = pendingObject.GetComponentsInChildren<MeshRenderer>();
+            foreach(MeshRenderer mesh in child_mesh)
             {
-                Searcher(result,child.gameObject);
-            }
-        }
-        return result;
-    }
-
-    private void Searcher(List<GameObject> list,GameObject root)
-    {
-        list.Add(root);
-        if (root.transform.childCount > 0)
-        {
-            foreach (Transform child in root.transform)
-            {
-                Searcher(list,child.gameObject);
+                mesh.material = mats[1];
             }
         }
     }
