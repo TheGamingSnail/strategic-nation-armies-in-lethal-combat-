@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AINav : MonoBehaviour
@@ -79,6 +80,14 @@ public class AINav : MonoBehaviour
                                 // Quaternion NewRot = transform.rotation;
                                 // transform.rotation = OriginalRot;
                                 // transform.rotation = Quaternion.Lerp(transform.rotation, NewRot, m_Speed * Time.deltaTime);
+                            }
+                            else if(transform.tag == "TestUnit")
+                            {
+                                navMeshAgent.destination = transform.position;
+                                attacking = true;
+                                navMeshAgent.isStopped = true;
+                                attBuilding = FindClosestEnemy();
+                                transform.LookAt(new Vector3(attBuilding.transform.position.x, 0, attBuilding.transform.position.z));
                             }
                             else
                             {
@@ -213,11 +222,22 @@ public class AINav : MonoBehaviour
         GameObject[] gos;
         if (gameObject.tag == "Red" && !attacksOwnTeam)
         {
-            gos = GameObject.FindGameObjectsWithTag("Blue");
+            GameObject[] array1 = GameObject.FindGameObjectsWithTag("Blue");
+            GameObject[] array2 = GameObject.FindGameObjectsWithTag("TestUnit");
+            gos = array1.Concat(array2).ToArray();
         }
         else if (gameObject.tag == "Blue" && !attacksOwnTeam)
         {
-            gos = GameObject.FindGameObjectsWithTag("Red");
+            GameObject[] array1 = GameObject.FindGameObjectsWithTag("Red");
+            GameObject[] array2 = GameObject.FindGameObjectsWithTag("TestUnit");
+            gos = array1.Concat(array2).ToArray();
+        }
+        else if (gameObject.tag == "TestUnit")
+        {
+            GameObject[] array1 = GameObject.FindGameObjectsWithTag("Red");
+            GameObject[] array2 = GameObject.FindGameObjectsWithTag("Blue");
+            GameObject[] array3 = GameObject.FindGameObjectsWithTag("TestUnit");
+            gos = array1.Concat(array2).Concat(array3).ToArray();
         }
         else
         {

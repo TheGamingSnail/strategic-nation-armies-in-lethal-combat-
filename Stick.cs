@@ -24,7 +24,7 @@ public class Stick : MonoBehaviour
             }
         }
 
-        this.enabled = false;
+        Destroy(this);
         
     }
 }
