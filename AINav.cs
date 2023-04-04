@@ -230,13 +230,27 @@ public class AINav : MonoBehaviour
         {
             if (go != gameObject)
             {
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance && go.GetComponent<Target>())
-            {
-                closest = go;
-                distance = curDistance;
-            }
+                if (attacksOwnTeam  && !go.GetComponent<AINav>().attacksOwnTeam)
+                {
+                    Vector3 diff = go.transform.position - position;
+                    float curDistance = diff.sqrMagnitude;
+                    if (curDistance < distance && go.GetComponent<Target>())
+                    {
+                        closest = go;
+                        distance = curDistance;
+                    }
+                }
+                else if (!attacksOwnTeam)
+                {
+                    Vector3 diff = go.transform.position - position;
+                    float curDistance = diff.sqrMagnitude;
+                    if (curDistance < distance && go.GetComponent<Target>())
+                    {
+                        closest = go;
+                        distance = curDistance;
+                    }
+                }
+            
             }
         }
         if (!closest)
