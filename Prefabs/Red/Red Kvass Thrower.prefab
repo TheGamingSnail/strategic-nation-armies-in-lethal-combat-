@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   findName: bottle
+  aimDis: 8.7
   angle: 25
 --- !u!1 &6737049436454586981
 GameObject:
