@@ -17,7 +17,6 @@ public class SelfLaunch : MonoBehaviour
         float velocity = 0;
         NavMeshAgent navMA = target.GetComponent<NavMeshAgent>();
         float distance = Vector3.Distance(transform.position, target.position);
-        Debug.Log(distance + " " + aimDis);
         if (distance >= aimDis)
         {
             distance = Vector3.Distance(transform.position, target.position + target.forward * navMA.speed);
@@ -26,8 +25,7 @@ public class SelfLaunch : MonoBehaviour
         {
             distance =  Vector3.Distance(transform.position, target.position);
         }
-        Debug.Log(distance + " " + Vector3.Distance(transform.position, target.position) + " " + (Vector3.Distance(transform.position, target.position) >= aimDis));
-        
+                
         velocity = distance / (Mathf.Sin(2 * angle * Mathf.Deg2Rad) / Physics.gravity.magnitude);
         float xVelocity = Mathf.Sqrt(velocity) * Mathf.Cos(angle * Mathf.Deg2Rad);
         float yVelocity = Mathf.Sqrt(velocity) * Mathf.Sin(angle * Mathf.Deg2Rad);

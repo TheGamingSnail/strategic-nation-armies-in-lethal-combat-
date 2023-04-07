@@ -5480,27 +5480,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ea810a9576d1a4eab1217bb3cab149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objText:
-  - Striaght wall
+  buildingObjText:
+  - Straight Wall
   - Curved Wall
+  blueObjText:
   - Blue Dude
   - Blue Big Dude
-  - Blue AK Dude
-  - Blue RPG Dude
-  - Blue Shield Dude
-  - Blue TP Dude
-  - Blue Spear Thrower
   - Blue Knight
+  - Blue Shield
+  - Blue Teleporter
+  - Blue Pew Pew
+  - Blue Rocket Dude
+  - Blue Spear Thrower
   - Blue Kvass Medic
+  redObjText:
   - Red Dude
   - Red Big Dude
-  - Red AK Dude
-  - Red RPG Dude
-  - Red Shield Dude
-  - Red TP Dude
-  - Red Spear Thrower
   - Red Knight
+  - Red Shield
+  - Red Teleporter
+  - Red Pew Pew
+  - Red Rocket Dude
+  - Red Spear Thrower
   - Red Kvass Medic
+  testObjText:
+  - Unkillable Dude
+  - Macho Spear Thrower
 --- !u!114 &539517755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11312,48 +11317,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7bc27d3b8c6354a9581bb287bc7821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objects:
+  buildingObjects:
   - {fileID: 8264561705734198265, guid: f22573b88e3eb1c4ba3638980addce20, type: 3}
   - {fileID: 5828270302635161443, guid: 8c51a49d569c28740bdc204864f900d2, type: 3}
+  blueObjects:
   - {fileID: 6635544063503812291, guid: faf48d703ba91ac439c4fa8ff1d90863, type: 3}
   - {fileID: 2919914993545107738, guid: e8817cbd1e4aca94291657c3b1ca4dbb, type: 3}
-  - {fileID: 5921419875509889628, guid: e80efdecc8d7e2449a8d1b196c4fc396, type: 3}
-  - {fileID: 5921419875509889628, guid: 0d5cb73845c7efd4fae6574e69c833f7, type: 3}
+  - {fileID: 5560168714296521983, guid: 038ed4781f4bfc14c80d6fe74711508d, type: 3}
   - {fileID: 317387800500775382, guid: e9d71f8d71f06324cb40f10fcb5dc36c, type: 3}
   - {fileID: 7212033375839635802, guid: dcdc080b1f7517141be817bc868fb37c, type: 3}
+  - {fileID: 5921419875509889628, guid: e80efdecc8d7e2449a8d1b196c4fc396, type: 3}
+  - {fileID: 5921419875509889628, guid: 0d5cb73845c7efd4fae6574e69c833f7, type: 3}
   - {fileID: 3828558820419949181, guid: 0db3f023275ed7b44958b95f20eee8a8, type: 3}
-  - {fileID: 5560168714296521983, guid: 038ed4781f4bfc14c80d6fe74711508d, type: 3}
   - {fileID: 7930819908112832117, guid: a3d1ecb60ac1d68478416227cf208e40, type: 3}
+  redObjects:
   - {fileID: 6635544063503812291, guid: d6948d274dae7744796de57174900e80, type: 3}
   - {fileID: 2919914993545107738, guid: 0b810d697cb18cf4eae96fd32ceaa2b7, type: 3}
-  - {fileID: 5921419875509889628, guid: 3b402e63168857f4a89528a04ca2fd5d, type: 3}
-  - {fileID: 5921419875509889628, guid: 2291033fade127748b9f808a4a9b8118, type: 3}
+  - {fileID: 5560168714296521983, guid: 200e6df66335f1a469f0e997ca9cf62a, type: 3}
   - {fileID: 317387800500775382, guid: 7fda172cde86940479a3da7c318bbb88, type: 3}
   - {fileID: 7212033375839635802, guid: a114bbac89c6998479b6f70be40627f9, type: 3}
+  - {fileID: 5921419875509889628, guid: 3b402e63168857f4a89528a04ca2fd5d, type: 3}
+  - {fileID: 5921419875509889628, guid: 2291033fade127748b9f808a4a9b8118, type: 3}
   - {fileID: 3828558820419949181, guid: e2b1c1e0c31a2ef46a283428c0365825, type: 3}
-  - {fileID: 5560168714296521983, guid: 200e6df66335f1a469f0e997ca9cf62a, type: 3}
   - {fileID: 7930819908112832117, guid: e413b5afe6290c2478f7d5c3d80928e3, type: 3}
-  bpObjects:
+  testObjects:
+  - {fileID: 6053793532839237453, guid: c185592fe4a64a042beac654d592cb90, type: 3}
+  - {fileID: 6053793532839237453, guid: c185592fe4a64a042beac654d592cb90, type: 3}
+  bpBuildingObjects:
   - {fileID: 8264561705734198265, guid: 92e04261292071249946e3cc856b98eb, type: 3}
   - {fileID: 5828270302635161443, guid: bd39485b4844a99459e3dbf9bb3c775f, type: 3}
+  bpBlueObjects:
   - {fileID: 7320412313497595992, guid: 11a37982b6dd3ce459ce33e7f729a71f, type: 3}
   - {fileID: 6845008165499902676, guid: 3210527d0633d5741905617f8c3aaaf4, type: 3}
-  - {fileID: 6795525339484534366, guid: 6aa26287268b963469a107b8c2de1794, type: 3}
-  - {fileID: 5921419875509889628, guid: 62ac7a7a6d7864d468126495767ece59, type: 3}
+  - {fileID: 5560168714296521983, guid: cb7fc3d37d5b03f438e70340b7c2fc52, type: 3}
   - {fileID: 317387800500775382, guid: 4b192b881b910b24ba48336c3d630428, type: 3}
   - {fileID: 7320412313497595992, guid: ddf5c6b9b22793b40870b1f9a79ee605, type: 3}
+  - {fileID: 6795525339484534366, guid: 6aa26287268b963469a107b8c2de1794, type: 3}
+  - {fileID: 5921419875509889628, guid: 62ac7a7a6d7864d468126495767ece59, type: 3}
   - {fileID: 3828558820419949181, guid: 54474e5e714987b489a6f0d37cd9496d, type: 3}
-  - {fileID: 5560168714296521983, guid: cb7fc3d37d5b03f438e70340b7c2fc52, type: 3}
   - {fileID: 7930819908112832117, guid: 6c78b85d158a298469dca577c1385cb3, type: 3}
+  bpRedObjects:
   - {fileID: 7320412313497595992, guid: 73552a3705e32b8488ced38c9dd3b3df, type: 3}
   - {fileID: 6845008165499902676, guid: ecb2bbb53e6496041a85e006025f2d89, type: 3}
-  - {fileID: 6795525339484534366, guid: 1b12f78f730cd164c9e2c09d8b81e904, type: 3}
-  - {fileID: 5921419875509889628, guid: 4a9e20abeee30254f8145c619a112186, type: 3}
+  - {fileID: 5560168714296521983, guid: 4be3a233c630c9d4f9fdc4dc58968fdb, type: 3}
   - {fileID: 317387800500775382, guid: a4cc0ccf0dab19a4683780db86fea118, type: 3}
   - {fileID: 7320412313497595992, guid: 7ceae03a29289e94eb6d7364ba472ee9, type: 3}
+  - {fileID: 6795525339484534366, guid: 1b12f78f730cd164c9e2c09d8b81e904, type: 3}
+  - {fileID: 5921419875509889628, guid: 4a9e20abeee30254f8145c619a112186, type: 3}
   - {fileID: 3828558820419949181, guid: 5ca457ae094f92f4d9e8ac05084ccee4, type: 3}
-  - {fileID: 5560168714296521983, guid: 4be3a233c630c9d4f9fdc4dc58968fdb, type: 3}
   - {fileID: 7930819908112832117, guid: 068afea597b49704aa2728a78bec7ee9, type: 3}
+  bpTestObjects:
+  - {fileID: 6053793532839237453, guid: c185592fe4a64a042beac654d592cb90, type: 3}
+  - {fileID: 6053793532839237453, guid: c185592fe4a64a042beac654d592cb90, type: 3}
   mats:
   - {fileID: 2100000, guid: c13b6fa8579b7df44b2d113db53c31b9, type: 2}
   - {fileID: 2100000, guid: acd8cacf513915c4994c0acd6e7b1f8c, type: 2}
@@ -11362,6 +11377,7 @@ MonoBehaviour:
   index_: 0
   isSelected: 0
   isPlaceable: 0
+  selArray: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 136
@@ -16836,7 +16852,7 @@ GameObject:
   - component: {fileID: 455116025135315594}
   m_Layer: 0
   m_Name: Blue enemy
-  m_TagString: Blue
+  m_TagString: TestUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17380,7 +17396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   findName: spear
-  aimDis: 8.7
+  aimDis: 10
   angle: 15
 --- !u!4 &2126137996064019983
 Transform:
