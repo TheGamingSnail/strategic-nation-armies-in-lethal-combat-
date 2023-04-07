@@ -173,7 +173,10 @@ public class AINav : MonoBehaviour
                     {
                         if (FindClosestEnemy())
                         {
-                            attBuilding = FindClosestEnemy();
+                            if (FindClosestEnemy() != attBuilding)
+                            {
+                                attBuilding = FindClosestEnemy();
+                            }
                         }
                     }
                 }
@@ -295,6 +298,7 @@ public class AINav : MonoBehaviour
         }
         else
         {
+            int checkedAmount = 0;
             while (!closest)
             {
                 GameObject gobj = gos[Random.Range(0, gos.Length - 1)];
@@ -304,6 +308,11 @@ public class AINav : MonoBehaviour
                     {
                         closest = gobj;
                     }
+                }
+                checkedAmount++;
+                if(checkedAmount > gos.Length)
+                {
+                    return null;
                 }
             }
         }
