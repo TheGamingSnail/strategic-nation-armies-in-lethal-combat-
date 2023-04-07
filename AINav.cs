@@ -21,6 +21,8 @@ public class AINav : MonoBehaviour
     [SerializeField] private Gun gunScript;
     [SerializeField] private bool fighting = false;
     [SerializeField] private GameObject tpPart;
+
+    [SerializeField] private bool victimIsRand = false;
     public bool canTeleport = false;
     private float time = 1f;
     private float time2 = 1f;
@@ -145,6 +147,13 @@ public class AINav : MonoBehaviour
                 ProjectileAimTest rpg = rpgFirePos.GetComponent<ProjectileAimTest>();
                 rpg.target = attBuilding.transform;
                 rpg.FireLauncher();
+                if (victimIsRand)
+                    {
+                        if (FindClosestEnemy())
+                        {
+                            attBuilding = FindClosestEnemy();
+                        }
+                    }
             }
 
             else if (Time.time >= time && attBuilding && !isMelee && !rpgFirePos && heldThrowable)
@@ -154,11 +163,19 @@ public class AINav : MonoBehaviour
                     time = Time.time + attackTime;
                     SelfLaunch throwable = heldThrowable.GetComponent<SelfLaunch>();
                     throwable.target = attBuilding.transform;
+                    heldThrowable.transform.Find("spear").gameObject.GetComponent<Stick>().thrower = transform;
                     GameObject newThrowable = Instantiate(throwablePrefab, heldThrowable.transform.position, heldThrowable.transform.rotation);
                     newThrowable.transform.parent = heldThrowable.transform.parent;
                     heldThrowable.transform.parent = null;
                     throwable.enabled = true;
                     heldThrowable = newThrowable;
+                    if (victimIsRand)
+                    {
+                        if (FindClosestEnemy())
+                        {
+                            attBuilding = FindClosestEnemy();
+                        }
+                    }
                 }
             }
             
@@ -246,31 +263,48 @@ public class AINav : MonoBehaviour
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
-        foreach (GameObject go in gos)
+        if (!victimIsRand)
         {
-            if (go != gameObject)
+            foreach (GameObject go in gos)
             {
-                if (attacksOwnTeam  && !go.GetComponent<AINav>().attacksOwnTeam)
+                if (go != gameObject)
                 {
-                    Vector3 diff = go.transform.position - position;
-                    float curDistance = diff.sqrMagnitude;
-                    if (curDistance < distance && go.GetComponent<Target>())
+                    if (attacksOwnTeam  && !go.GetComponent<AINav>().attacksOwnTeam)
                     {
-                        closest = go;
-                        distance = curDistance;
+                        Vector3 diff = go.transform.position - position;
+                        float curDistance = diff.sqrMagnitude;
+                        if (curDistance < distance && go.GetComponent<Target>())
+                        {
+                            closest = go;
+                            distance = curDistance;
+                        }
+                    }
+                    else if (!attacksOwnTeam)
+                    {
+                        Vector3 diff = go.transform.position - position;
+                        float curDistance = diff.sqrMagnitude;
+                        if (curDistance < distance && go.GetComponent<Target>())
+                        {
+                            closest = go;
+                            distance = curDistance;
+                        }
+                    }
+                
+                }
+            }
+        }
+        else
+        {
+            while (!closest)
+            {
+                GameObject gobj = gos[Random.Range(0, gos.Length - 1)];
+                if (gobj != gameObject)
+                {
+                    if (gobj.GetComponent<Target>())
+                    {
+                        closest = gobj;
                     }
                 }
-                else if (!attacksOwnTeam)
-                {
-                    Vector3 diff = go.transform.position - position;
-                    float curDistance = diff.sqrMagnitude;
-                    if (curDistance < distance && go.GetComponent<Target>())
-                    {
-                        closest = go;
-                        distance = curDistance;
-                    }
-                }
-            
             }
         }
         if (!closest)
