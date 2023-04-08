@@ -5504,6 +5504,7 @@ MonoBehaviour:
   - Red Spear Thrower
   - Red Kvass Medic
   testObjText:
+  - Kvassed Up Drunk Dude
   - Shitama
   - Spear Yeeter
   - Spear Yeeter(batshit crazy)
@@ -11345,6 +11346,7 @@ MonoBehaviour:
   - {fileID: 7930819908112832117, guid: e413b5afe6290c2478f7d5c3d80928e3, type: 3}
   testObjects:
   - {fileID: 5762764930317985271, guid: 2e638c3bb6b6a3945a30799d00505688, type: 3}
+  - {fileID: 6423693599449338013, guid: d7efbc55555b1de49b31e3806aa7d9ab, type: 3}
   - {fileID: 8198712673273759410, guid: e60e5201efe6bc545a371d6c3dcd23e7, type: 3}
   - {fileID: 8198712673273759410, guid: 9babc2519f5f8704f8fac07511fa342a, type: 3}
   - {fileID: 193280131286186540, guid: c5d421f696c217e4295bd9508479d4bd, type: 3}
@@ -11373,6 +11375,7 @@ MonoBehaviour:
   - {fileID: 3828558820419949181, guid: 5ca457ae094f92f4d9e8ac05084ccee4, type: 3}
   - {fileID: 7930819908112832117, guid: 068afea597b49704aa2728a78bec7ee9, type: 3}
   bpTestObjects:
+  - {fileID: 7320412313497595992, guid: 11a37982b6dd3ce459ce33e7f729a71f, type: 3}
   - {fileID: 7320412313497595992, guid: 11a37982b6dd3ce459ce33e7f729a71f, type: 3}
   - {fileID: 3828558820419949181, guid: 54474e5e714987b489a6f0d37cd9496d, type: 3}
   - {fileID: 3828558820419949181, guid: 54474e5e714987b489a6f0d37cd9496d, type: 3}

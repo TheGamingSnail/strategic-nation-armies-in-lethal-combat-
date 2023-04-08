@@ -41,7 +41,7 @@ public class AINav : MonoBehaviour
     void navUpdate()
     {
         Debug.DrawLine(transform.position, navMeshAgent.destination, Color.red);
-        if (!attBuilding)
+        if (!attBuilding || !attBuilding.GetComponent<UnityEngine.AI.NavMeshAgent>())
         {
             navMeshAgent.isStopped = false;
             attacking = false;
@@ -118,7 +118,7 @@ public class AINav : MonoBehaviour
         {
             if (Time.time >= time && attBuilding && isMelee)
             {
-                if (!attBuilding.GetComponent<Target>())
+                if (!attBuilding.GetComponent<Target>() || !attBuilding.GetComponent<UnityEngine.AI.NavMeshAgent>())
                 {
                     attacking = false;
                 }
