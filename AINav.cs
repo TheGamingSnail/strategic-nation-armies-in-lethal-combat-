@@ -135,7 +135,7 @@ public class AINav : MonoBehaviour
         if (attacking && !fireWhenFound)
         {
             
-            if (Time.time >= time && attBuilding && isMelee)
+            if (Time.time >= time && attBuilding && isMelee && !fireWhenFound)
             {
                 if (!attBuilding.GetComponent<Target>() || !attBuilding.GetComponent<UnityEngine.AI.NavMeshAgent>())
                 {
@@ -149,7 +149,7 @@ public class AINav : MonoBehaviour
                 }
                 
             }
-            else if (Time.time >= time && !rpgFirePos && !heldThrowable && attBuilding && !isMelee)
+            else if (Time.time >= time && !rpgFirePos && !heldThrowable && attBuilding && !isMelee && !fireWhenFound)
             {
                 time = Time.time + attackTime;
                 gunScript.Shoot(attDamage);
@@ -160,7 +160,7 @@ public class AINav : MonoBehaviour
                 }
             }
 
-            else if (Time.time >= time && attBuilding && !heldThrowable && !isMelee && rpgFirePos)
+            else if (Time.time >= time && attBuilding && !heldThrowable && !isMelee && rpgFirePos && !fireWhenFound)
             {
                 time = Time.time + attackTime;
                 ProjectileAimTest rpg = rpgFirePos.GetComponent<ProjectileAimTest>();
@@ -175,14 +175,17 @@ public class AINav : MonoBehaviour
                 }
             }
 
-            else if (Time.time >= time && attBuilding && !isMelee && !rpgFirePos && heldThrowable)
+            else if (Time.time >= time && attBuilding && !isMelee && !rpgFirePos && heldThrowable && !fireWhenFound)
             {
                 if (attBuilding.GetComponent<UnityEngine.AI.NavMeshAgent>())
                 {
                     time = Time.time + attackTime;
                     SelfLaunch throwable = heldThrowable.GetComponent<SelfLaunch>();
                     throwable.target = attBuilding.transform;
-                    heldThrowable.transform.Find("spear").gameObject.GetComponent<Stick>().thrower = transform;
+                    if (heldThrowable.transform.Find("spear"))
+                    {
+                        heldThrowable.transform.Find("spear").gameObject.GetComponent<Stick>().thrower = transform;
+                    }
                     GameObject newThrowable = Instantiate(throwablePrefab, heldThrowable.transform.position, heldThrowable.transform.rotation);
                     newThrowable.transform.parent = heldThrowable.transform.parent;
                     heldThrowable.transform.parent = null;
@@ -212,14 +215,6 @@ public class AINav : MonoBehaviour
             {
                 time = Time.time + attackTime;
                 gunScript.Shoot(attDamage);
-                if (attBuilding)
-                {
-                    if (!attBuilding.GetComponent<Target>())
-                    {
-                        attacking = false;
-                        attBuilding = null;
-                    }
-                }
                 if (victimIsRand)
                 {
                     if (FindClosestEnemy())
@@ -228,6 +223,11 @@ public class AINav : MonoBehaviour
                         attBuilding = FindClosestEnemy();
                     }
                 }
+                navMeshAgent.destination = transform.position;
+                attacking = true;
+                navMeshAgent.isStopped = true;
+                attBuilding = FindClosestEnemy();
+                transform.LookAt(new Vector3(attBuilding.transform.position.x, 0, attBuilding.transform.position.z));
             }
         }
         
