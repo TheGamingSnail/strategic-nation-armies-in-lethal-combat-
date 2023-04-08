@@ -22,6 +22,8 @@ public class AINav : MonoBehaviour
     [SerializeField] private bool fighting = false;
     [SerializeField] private GameObject tpPart;
 
+    [SerializeField] private bool fireWhenFound = false;
+
     [SerializeField] private bool victimIsRand = false;
     public bool canTeleport = false;
     private float time = 1f;
@@ -40,6 +42,22 @@ public class AINav : MonoBehaviour
     // Update is called once per frame
     void navUpdate()
     {
+        if (attBuilding && !attBuilding.GetComponent<Target>())
+        {
+            navMeshAgent.isStopped = false;
+            attacking = false;
+            if (FindClosestEnemy())
+            {
+                navMeshAgent.destination = FindClosestEnemy().transform.position;
+            }
+            if (victimIsRand)
+            {
+                if (FindClosestEnemy())
+                {
+                    attBuilding = FindClosestEnemy();
+                }
+            }
+        }
         Debug.DrawLine(transform.position, navMeshAgent.destination, Color.red);
         if (!attBuilding || !attBuilding.GetComponent<UnityEngine.AI.NavMeshAgent>())
         {
@@ -114,8 +132,9 @@ public class AINav : MonoBehaviour
             }
         }
 
-        if (attacking)
+        if (attacking && !fireWhenFound)
         {
+            
             if (Time.time >= time && attBuilding && isMelee)
             {
                 if (!attBuilding.GetComponent<Target>() || !attBuilding.GetComponent<UnityEngine.AI.NavMeshAgent>())
@@ -148,12 +167,12 @@ public class AINav : MonoBehaviour
                 rpg.target = attBuilding.transform;
                 rpg.FireLauncher();
                 if (victimIsRand)
+                {
+                    if (FindClosestEnemy())
                     {
-                        if (FindClosestEnemy())
-                        {
-                            attBuilding = FindClosestEnemy();
-                        }
+                        attBuilding = FindClosestEnemy();
                     }
+                }
             }
 
             else if (Time.time >= time && attBuilding && !isMelee && !rpgFirePos && heldThrowable)
@@ -187,6 +206,31 @@ public class AINav : MonoBehaviour
                 navMeshAgent.destination = FindClosestEnemy().transform.position;
             }
         }
+        else if (foundEnemy && !isMelee && fireWhenFound)
+        {
+            if (Time.time >= time && !rpgFirePos && !heldThrowable && navMeshAgent.destination != null && !isMelee)
+            {
+                time = Time.time + attackTime;
+                gunScript.Shoot(attDamage);
+                if (attBuilding)
+                {
+                    if (!attBuilding.GetComponent<Target>())
+                    {
+                        attacking = false;
+                        attBuilding = null;
+                    }
+                }
+                if (victimIsRand)
+                {
+                    if (FindClosestEnemy())
+                    {
+                        navMeshAgent.destination = FindClosestEnemy().transform.position;
+                        attBuilding = FindClosestEnemy();
+                    }
+                }
+            }
+        }
+        
 
         if (Time.time >= time2 && FindClosestEnemy())
         {

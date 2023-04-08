@@ -5490,6 +5490,7 @@ MonoBehaviour:
   - Blue Shield
   - Blue Teleporter
   - Blue Pew Pew
+  - Blue Minigun
   - Blue Rocket Dude
   - Blue Spear Thrower
   - Blue Kvass Medic
@@ -5500,6 +5501,7 @@ MonoBehaviour:
   - Red Shield
   - Red Teleporter
   - Red Pew Pew
+  - Red Minigun
   - Red Rocket Dude
   - Red Spear Thrower
   - Red Kvass Medic
@@ -5510,6 +5512,8 @@ MonoBehaviour:
   - Spear Yeeter(batshit crazy)
   - Semi-Auto RPG
   - Semi-Auto RPG(batshit crazy)
+  - Metal Storm
+  - Metal Storm(batshit crazy)
 --- !u!114 &539517755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11331,6 +11335,7 @@ MonoBehaviour:
   - {fileID: 317387800500775382, guid: e9d71f8d71f06324cb40f10fcb5dc36c, type: 3}
   - {fileID: 7212033375839635802, guid: dcdc080b1f7517141be817bc868fb37c, type: 3}
   - {fileID: 5921419875509889628, guid: e80efdecc8d7e2449a8d1b196c4fc396, type: 3}
+  - {fileID: 4239349646079537270, guid: 596408e97a77a45489e9c02436085ee4, type: 3}
   - {fileID: 5921419875509889628, guid: 0d5cb73845c7efd4fae6574e69c833f7, type: 3}
   - {fileID: 3828558820419949181, guid: 0db3f023275ed7b44958b95f20eee8a8, type: 3}
   - {fileID: 7930819908112832117, guid: a3d1ecb60ac1d68478416227cf208e40, type: 3}
@@ -11341,6 +11346,7 @@ MonoBehaviour:
   - {fileID: 317387800500775382, guid: 7fda172cde86940479a3da7c318bbb88, type: 3}
   - {fileID: 7212033375839635802, guid: a114bbac89c6998479b6f70be40627f9, type: 3}
   - {fileID: 5921419875509889628, guid: 3b402e63168857f4a89528a04ca2fd5d, type: 3}
+  - {fileID: 4239349646079537270, guid: 688f8f940e828b04d8d88556600e2ab9, type: 3}
   - {fileID: 5921419875509889628, guid: 2291033fade127748b9f808a4a9b8118, type: 3}
   - {fileID: 3828558820419949181, guid: e2b1c1e0c31a2ef46a283428c0365825, type: 3}
   - {fileID: 7930819908112832117, guid: e413b5afe6290c2478f7d5c3d80928e3, type: 3}
@@ -11351,6 +11357,8 @@ MonoBehaviour:
   - {fileID: 8198712673273759410, guid: 9babc2519f5f8704f8fac07511fa342a, type: 3}
   - {fileID: 193280131286186540, guid: c5d421f696c217e4295bd9508479d4bd, type: 3}
   - {fileID: 193280131286186540, guid: 8df5a414a1b37834b93e357861594f90, type: 3}
+  - {fileID: 4570935002424952798, guid: b7aee0e826aaa0c48b311a2652159216, type: 3}
+  - {fileID: 4570935002424952798, guid: 43c35f8074ce2ef47b920dd036029b6f, type: 3}
   bpBuildingObjects:
   - {fileID: 8264561705734198265, guid: 92e04261292071249946e3cc856b98eb, type: 3}
   - {fileID: 5828270302635161443, guid: bd39485b4844a99459e3dbf9bb3c775f, type: 3}
@@ -11361,6 +11369,7 @@ MonoBehaviour:
   - {fileID: 317387800500775382, guid: 4b192b881b910b24ba48336c3d630428, type: 3}
   - {fileID: 7320412313497595992, guid: ddf5c6b9b22793b40870b1f9a79ee605, type: 3}
   - {fileID: 6795525339484534366, guid: 6aa26287268b963469a107b8c2de1794, type: 3}
+  - {fileID: 6795525339484534366, guid: 7c738c8e9d7bbf4449ff75a8a0429f91, type: 3}
   - {fileID: 5921419875509889628, guid: 62ac7a7a6d7864d468126495767ece59, type: 3}
   - {fileID: 3828558820419949181, guid: 54474e5e714987b489a6f0d37cd9496d, type: 3}
   - {fileID: 7930819908112832117, guid: 6c78b85d158a298469dca577c1385cb3, type: 3}
@@ -11371,6 +11380,7 @@ MonoBehaviour:
   - {fileID: 317387800500775382, guid: a4cc0ccf0dab19a4683780db86fea118, type: 3}
   - {fileID: 7320412313497595992, guid: 7ceae03a29289e94eb6d7364ba472ee9, type: 3}
   - {fileID: 6795525339484534366, guid: 1b12f78f730cd164c9e2c09d8b81e904, type: 3}
+  - {fileID: 6795525339484534366, guid: 7c738c8e9d7bbf4449ff75a8a0429f91, type: 3}
   - {fileID: 5921419875509889628, guid: 4a9e20abeee30254f8145c619a112186, type: 3}
   - {fileID: 3828558820419949181, guid: 5ca457ae094f92f4d9e8ac05084ccee4, type: 3}
   - {fileID: 7930819908112832117, guid: 068afea597b49704aa2728a78bec7ee9, type: 3}
@@ -11381,6 +11391,8 @@ MonoBehaviour:
   - {fileID: 3828558820419949181, guid: 54474e5e714987b489a6f0d37cd9496d, type: 3}
   - {fileID: 5921419875509889628, guid: 62ac7a7a6d7864d468126495767ece59, type: 3}
   - {fileID: 5921419875509889628, guid: 62ac7a7a6d7864d468126495767ece59, type: 3}
+  - {fileID: 6795525339484534366, guid: 7c738c8e9d7bbf4449ff75a8a0429f91, type: 3}
+  - {fileID: 6795525339484534366, guid: 7c738c8e9d7bbf4449ff75a8a0429f91, type: 3}
   mats:
   - {fileID: 2100000, guid: c13b6fa8579b7df44b2d113db53c31b9, type: 2}
   - {fileID: 2100000, guid: acd8cacf513915c4994c0acd6e7b1f8c, type: 2}

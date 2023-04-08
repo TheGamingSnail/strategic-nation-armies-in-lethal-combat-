@@ -94,6 +94,10 @@ public class Gun : MonoBehaviour{
             {
                 StartCoroutine(DrawTrail(hit.point, hit.normal, hit));
             }
+            else
+            {
+                StartCoroutine(DrawTrail(bulSpawnPos.position + GetDirection() * 100, Vector3.zero, hit));
+            }
         }
 
     }
