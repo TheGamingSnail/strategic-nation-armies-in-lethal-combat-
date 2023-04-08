@@ -256,8 +256,9 @@ public class AINav : MonoBehaviour
         {
             GameObject[] array1 = GameObject.FindGameObjectsWithTag("Red");
             GameObject[] array2 = GameObject.FindGameObjectsWithTag("Blue");
-            GameObject[] array3 = GameObject.FindGameObjectsWithTag("TestUnit");
-            gos = array1.Concat(array2).Concat(array3).ToArray();
+            // GameObject[] array3 = GameObject.FindGameObjectsWithTag("TestUnit");
+            // gos = array1.Concat(array2).Concat(array3).ToArray();
+            gos = array1.Concat(array2).ToArray();
         }
         else
         {
