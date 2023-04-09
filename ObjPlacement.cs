@@ -121,10 +121,15 @@ public class ObjPlacement : MonoBehaviour
 
     public void PlaceObject()
     {
-            Destroy(pendingObject);
             if (selArray == 1)
             {
-                pendingObject = Instantiate(buildingObjects[index_], pos, transform.rotation);
+                Transform pTrans = pendingObject.transform;
+                Destroy(pendingObject);
+                pendingObject = Instantiate(buildingObjects[index_], pendingObject.transform.position, pendingObject.transform.rotation);
+            }
+            else
+            {
+                Destroy(pendingObject);
             }
             if (selArray == 2)
             {

@@ -10,9 +10,12 @@ public class WeaponSwitching : MonoBehaviour
     public GameObject weapon1;
     public GameObject weapon2;
     public GameObject weapon3;
+
+    public GameObject weapon4;
     public bool Selected1;
     public bool Selected2;
     public bool Selected3;
+    public bool Selected4;
     void Start()
     {
         StartCoroutine(SelectWeapon());
@@ -50,6 +53,10 @@ public class WeaponSwitching : MonoBehaviour
         {
             selectedWeapon = 2;
         }
+        if (Input.GetKeyDown(KeyCode.Alpha4) && transform.childCount >= 4)
+        {
+            selectedWeapon = 3;
+        }
 
         if (previousSelectedWeapon != selectedWeapon)
         {
@@ -84,6 +91,14 @@ public class WeaponSwitching : MonoBehaviour
         {
             Selected3 = false;
         }
+        if (selectedWeapon == 3)
+        {
+            Selected4 = true;
+        }
+        else
+        {
+            Selected4 = false;
+        }
         #endregion
         #region transitions
         if(Selected1 == true && weapon1.activeSelf == true)
@@ -103,6 +118,14 @@ public class WeaponSwitching : MonoBehaviour
             weapon2.transform.localPosition = Vector3.Lerp(weapon2.transform.localPosition, position2, WeaponSwitchSpeed * Time.deltaTime);
         }
         if (Selected3 == true && weapon3.activeSelf == true)
+        {
+            weapon3.transform.localPosition = Vector3.Lerp(weapon3.transform.localPosition, position1, WeaponSwitchSpeed * Time.deltaTime);
+        }
+        else
+        {
+            weapon3.transform.localPosition = Vector3.Lerp(weapon3.transform.localPosition, position2, WeaponSwitchSpeed * Time.deltaTime);
+        }
+        if (Selected4 == true && weapon4.activeSelf == true)
         {
             weapon3.transform.localPosition = Vector3.Lerp(weapon3.transform.localPosition, position1, WeaponSwitchSpeed * Time.deltaTime);
         }
