@@ -92,7 +92,7 @@ public class ObjPlacement : MonoBehaviour
         }
         if (pendingObject)
         {
-            pendingObject.transform.LookAt(new Vector3(player.transform.position.x, 0, player.transform.position.z));
+            pendingObject.transform.LookAt(new Vector3(player.transform.position.x, pendingObject.transform.position.y, player.transform.position.z));
         }
     }
 

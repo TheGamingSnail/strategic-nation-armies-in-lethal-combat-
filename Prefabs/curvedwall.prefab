@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6605087789463023065}
   - component: {fileID: 5616510898401981702}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: curvedwall
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -41,9 +41,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5828270302635161443}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 11.455298, y: 2.1313586, z: 3.7126508}
   m_Center: {x: 0.05017805, y: 1.055697, z: -1.1970241}
 --- !u!1 &6318311305523099734
@@ -60,7 +68,8 @@ GameObject:
   - component: {fileID: 2549447543842404066}
   - component: {fileID: 757870698839592021}
   - component: {fileID: 5252335872091536307}
-  m_Layer: 7
+  - component: {fileID: 5784386262868866921}
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -140,9 +149,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6318311305523099734}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 72e869ece4cd56b41be8da171bb87a03, type: 3}
@@ -169,12 +186,35 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6318311305523099734}
-  serializedVersion: 2
+  serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &5784386262868866921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6318311305523099734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb08fee0e7715f4ead8319b0fd27d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

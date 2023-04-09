@@ -21,6 +21,7 @@ public class AINav : MonoBehaviour
     [SerializeField] private Gun gunScript;
     [SerializeField] private bool fighting = false;
     [SerializeField] private GameObject tpPart;
+    [SerializeField] private GameObject deathZEffect;
 
     [SerializeField] private bool fireWhenFound = false;
 
@@ -35,7 +36,7 @@ public class AINav : MonoBehaviour
     void Fight()
     {
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        fighting = true;
+        fighting = !fighting;
         
     }
 
@@ -260,6 +261,15 @@ public class AINav : MonoBehaviour
         if (fighting)
         {
             navUpdate();
+        }
+        else
+        {
+            navMeshAgent.isStopped = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            gameObject.GetComponent<Target>().health = 0;
+            Instantiate(deathZEffect, transform.position, Quaternion.identity);
         }
     }
 

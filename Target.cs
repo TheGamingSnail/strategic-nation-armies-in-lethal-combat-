@@ -27,7 +27,7 @@ public class Target : MonoBehaviour
                     Die();
                 }
             }
-            else
+            else if(amount > 0)
             {
                 navCode.Teleport();
                 nextTpTime = Time.time + tpCooldown;

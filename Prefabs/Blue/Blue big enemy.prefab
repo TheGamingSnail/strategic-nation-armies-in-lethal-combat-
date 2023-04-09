@@ -130,9 +130,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6636946172552768446}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6636946172552768440
@@ -148,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 250
+  tpCooldown: 0
 --- !u!195 &6636946172552768443
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -184,13 +193,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_: {fileID: 0}
   isMelee: 1
+  attacksOwnTeam: 0
   range: 50
   attackTime: 1
   checkTime: 1
   attDamage: 25
   m_Speed: 0
+  rpgFirePos: {fileID: 0}
+  heldThrowable: {fileID: 0}
+  throwablePrefab: {fileID: 0}
   gunScript: {fileID: 0}
   fighting: 0
+  tpPart: {fileID: 0}
+  deathZEffect: {fileID: 569473378916388007, guid: 0d1e5d1a766d0d642a92b023ce1dbfa9, type: 3}
+  fireWhenFound: 0
+  victimIsRand: 0
+  canTeleport: 0
 --- !u!114 &6636946172552768445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,9 +230,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6636946172552768446}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6636946172552768447
@@ -224,10 +250,21 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6636946172552768446}
-  serializedVersion: 2
+  serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
