@@ -264,7 +264,10 @@ public class AINav : MonoBehaviour
         }
         else
         {
-            navMeshAgent.isStopped = true;
+            if (navMeshAgent)
+            {
+                navMeshAgent.isStopped = true;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {

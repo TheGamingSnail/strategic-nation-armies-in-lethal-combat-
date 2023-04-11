@@ -126,6 +126,7 @@ public class ObjPlacement : MonoBehaviour
                 Transform pTrans = pendingObject.transform;
                 Destroy(pendingObject);
                 pendingObject = Instantiate(buildingObjects[index_], pendingObject.transform.position, pendingObject.transform.rotation);
+                pendingObject = null;
             }
             else
             {
@@ -143,7 +144,10 @@ public class ObjPlacement : MonoBehaviour
             {
                 pendingObject = Instantiate(testObjects[index_], pos, transform.rotation);
             }
-            pendingObject.transform.LookAt(new Vector3(player.transform.position.x, 0, player.transform.position.z));
+            if (pendingObject)
+            {
+                pendingObject.transform.LookAt(new Vector3(player.transform.position.x, 0, player.transform.position.z));
+            }
             SelectObject(index_);
         
     }

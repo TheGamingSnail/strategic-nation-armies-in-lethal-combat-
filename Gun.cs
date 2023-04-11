@@ -121,24 +121,26 @@ public class Gun : MonoBehaviour{
 
         Destroy(Trail.gameObject, Trail.time);
         Target target = null;
-        if (hit.transform.GetComponent<Target>())
+        if (hit.transform)
         {
-            target = hit.transform.GetComponent<Target>();
-        }
-        if (target != null)
+            if (hit.transform.GetComponent<Target>())
             {
-                target.TakeDamage(damage);
-                if (hitMarker)
+                target = hit.transform.GetComponent<Target>();
+            }
+            if (target != null)
                 {
-                    hitMarker.color = new Color32(255,0,0,255);
+                    target.TakeDamage(damage);
+                    if (hitMarker)
+                    {
+                        hitMarker.color = new Color32(255,0,0,255);
+                    }
                 }
-            }
 
-            if (hit.rigidbody != null)
-            {
-                hit.rigidbody.AddForce(-hit.normal * impactForce);
-            }
-    
+                if (hit.rigidbody != null)
+                {
+                    hit.rigidbody.AddForce(-hit.normal * impactForce);
+                }
+        }
     }
 
     private Vector3 GetDirection()
