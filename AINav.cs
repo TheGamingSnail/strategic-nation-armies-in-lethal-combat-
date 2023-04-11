@@ -8,6 +8,8 @@ public class AINav : MonoBehaviour
     [SerializeField] private Transform player_;
     private bool foundEnemy;
     private bool attacking;
+
+    [SerializeField] private bool isCannon = false;
     [SerializeField] private bool isMelee = true;
     [SerializeField] private bool attacksOwnTeam = false;
     [SerializeField] private float range = 50f;
@@ -117,6 +119,14 @@ public class AINav : MonoBehaviour
                                 navMeshAgent.destination = FindClosestEnemy().transform.position;
                             }
                             
+                        }
+                        else if (isCannon)
+                        {
+                            navMeshAgent.destination = transform.position;
+                            attacking = true;
+                            navMeshAgent.isStopped = true;
+                            attBuilding = FindClosestEnemy();
+                            transform.LookAt(new Vector3(attBuilding.transform.position.x, 0, attBuilding.transform.position.z));
                         }
                     }
                     
@@ -362,13 +372,13 @@ public class AINav : MonoBehaviour
                 GameObject gobj = gos[Random.Range(0, gos.Length - 1)];
                 if (gobj != gameObject)
                 {
-                    if (gobj.GetComponent<Target>())
+                    if (gobj.GetComponent<Target>() && gobj.GetComponent<UnityEngine.AI.NavMeshAgent>())
                     {
                         closest = gobj;
                     }
                 }
                 checkedAmount++;
-                if(checkedAmount > gos.Length)
+                if(checkedAmount > gos.Length + 1)
                 {
                     return null;
                 }
