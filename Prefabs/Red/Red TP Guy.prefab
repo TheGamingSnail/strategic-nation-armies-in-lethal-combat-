@@ -289,7 +289,7 @@ MonoBehaviour:
   gunScript: {fileID: 0}
   fighting: 0
   tpPart: {fileID: 6053793532839237453, guid: c185592fe4a64a042beac654d592cb90, type: 3}
-  deathZEffect: {fileID: 569473378916388007, guid: 0d1e5d1a766d0d642a92b023ce1dbfa9, type: 3}
+  deathZEffect: {fileID: 2166994242123862959, guid: 9c06bf75a4ca27a489d55258ca0b2f50, type: 3}
   fireWhenFound: 0
   victimIsRand: 0
   canTeleport: 1
