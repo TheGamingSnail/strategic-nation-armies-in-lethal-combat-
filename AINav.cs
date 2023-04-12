@@ -378,6 +378,13 @@ public class AINav : MonoBehaviour
                     }
                 }
                 checkedAmount++;
+                if (gos.Length == 1)
+                {
+                    if (gobj.GetComponent<Target>() && gobj.GetComponent<UnityEngine.AI.NavMeshAgent>())
+                    {
+                        closest = gobj;
+                    }
+                }
                 if(checkedAmount > gos.Length + 1)
                 {
                     return null;
