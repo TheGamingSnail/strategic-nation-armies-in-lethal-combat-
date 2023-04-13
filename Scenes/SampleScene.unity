@@ -5678,6 +5678,7 @@ MonoBehaviour:
   - Curved Wall
   - Ramp
   - Floor
+  - Gravity Block
   blueObjText:
   - Blue Dude
   - Blue Big Dude
@@ -11663,6 +11664,7 @@ MonoBehaviour:
   - {fileID: 5828270302635161443, guid: 8c51a49d569c28740bdc204864f900d2, type: 3}
   - {fileID: 2575019814933627597, guid: 4b139f921e422ff45bc69fb6554ba7e8, type: 3}
   - {fileID: 4302217096382749355, guid: e47b4afcc68a71a4297954e69330cb9b, type: 3}
+  - {fileID: 2763849477277607818, guid: 55a8c97c6e529f44996c305244c234a1, type: 3}
   blueObjects:
   - {fileID: 6635544063503812291, guid: faf48d703ba91ac439c4fa8ff1d90863, type: 3}
   - {fileID: 2919914993545107738, guid: e8817cbd1e4aca94291657c3b1ca4dbb, type: 3}
@@ -11703,6 +11705,7 @@ MonoBehaviour:
   - {fileID: 5828270302635161443, guid: bd39485b4844a99459e3dbf9bb3c775f, type: 3}
   - {fileID: 2575019814933627597, guid: 67fce188bc600eb44b1878322548b20b, type: 3}
   - {fileID: 4302217096382749355, guid: 7817db05a3a0b1f43a8c93c1d586cfa1, type: 3}
+  - {fileID: 2763849477277607818, guid: 123dd7c7433c5c548b9882ca93fd4698, type: 3}
   bpBlueObjects:
   - {fileID: 7320412313497595992, guid: 11a37982b6dd3ce459ce33e7f729a71f, type: 3}
   - {fileID: 6845008165499902676, guid: 3210527d0633d5741905617f8c3aaaf4, type: 3}
