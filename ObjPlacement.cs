@@ -28,7 +28,7 @@ public class ObjPlacement : MonoBehaviour
     public bool isPlaceable = true;
 
     public int selArray = 1;
-    Vector3 pos;
+    [SerializeField] Vector3 pos;
     private RaycastHit hit;
 
     private MeshRenderer[] child_mesh;
@@ -82,6 +82,11 @@ public class ObjPlacement : MonoBehaviour
             SelectObject(index_);
             
         }
+        if (selArray == 1 && menuOpen == true && pendingObject == true)
+        {
+            Transform child = pendingObject.transform.GetChild(0);
+            child.localPosition = new Vector3(0, child.localPosition.y, 0);
+        }
     }
 
     void FixedUpdate()
@@ -89,6 +94,7 @@ public class ObjPlacement : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10000, layerMask))
         {
             pos = hit.point;
+            Debug.Log(pos);
         }
         if (pendingObject)
         {
