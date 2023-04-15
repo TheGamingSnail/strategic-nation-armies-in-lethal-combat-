@@ -27,6 +27,8 @@ public class ObjPlacement : MonoBehaviour
     public bool isSelected;
     public bool isPlaceable = true;
 
+    [SerializeField] private GameObject mCamera;
+
     public int selArray = 1;
     [SerializeField] Vector3 pos;
     private RaycastHit hit;
@@ -91,9 +93,10 @@ public class ObjPlacement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10000, layerMask))
+        if (Physics.Linecast(mCamera.transform.position, mCamera.transform.forward * 100, out hit, layerMask))
         {
             pos = hit.point;
+            Debug.DrawRay(mCamera.transform.position, mCamera.transform.forward * 100, Color.red);
             Debug.Log(pos);
         }
         if (pendingObject)
