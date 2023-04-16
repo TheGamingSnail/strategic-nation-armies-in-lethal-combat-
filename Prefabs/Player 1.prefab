@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7bc27d3b8c6354a9581bb287bc7821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   buildingObjects:
   - {fileID: 8264561705734198265, guid: f22573b88e3eb1c4ba3638980addce20, type: 3}
   - {fileID: 5828270302635161443, guid: 8c51a49d569c28740bdc204864f900d2, type: 3}
@@ -301,17 +302,17 @@ MonoBehaviour:
   mats:
   - {fileID: 2100000, guid: c13b6fa8579b7df44b2d113db53c31b9, type: 2}
   - {fileID: 2100000, guid: acd8cacf513915c4994c0acd6e7b1f8c, type: 2}
-  player: {fileID: 60683649327961771}
+  player: {fileID: 7319934422989489336}
   menuOpen: 0
   index_: 0
   isSelected: 0
   isPlaceable: 0
-  mCamera: {fileID: 60683649327961771}
+  mCamera: {fileID: 7654443767756775713}
   selArray: 1
   pos: {x: 0, y: 0, z: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 136
 --- !u!114 &123156906493624611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15507,6 +15508,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 8212758691196981956}
+  - {fileID: 8126592490777232124}
   SimulationBehaviours: []
 --- !u!114 &8212758691196981956
 MonoBehaviour:

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
-public class ObjPlacement : MonoBehaviour
+public class ObjPlacement : NetworkBehaviour
 {
     public GameObject[] buildingObjects;
 
@@ -27,7 +28,7 @@ public class ObjPlacement : MonoBehaviour
     public bool isSelected;
     public bool isPlaceable = true;
 
-    [SerializeField] private GameObject mCamera;
+    [SerializeField] private Camera mCamera;
 
     public int selArray = 1;
     [SerializeField] Vector3 pos;
@@ -93,16 +94,17 @@ public class ObjPlacement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Physics.Linecast(mCamera.transform.position, mCamera.transform.forward * 100, out hit, layerMask))
+        if (Runner.LagCompensation.Raycast(mCamera.transform.position, mCamera.transform.forward, 10000, Object.InputAuthority, out var hitInfo, layerMask))
         {
-            pos = hit.point;
-            Debug.DrawRay(mCamera.transform.position, mCamera.transform.forward * 100, Color.red);
+            pos = hitInfo.Point;
             Debug.Log(pos);
         }
         if (pendingObject)
         {
             pendingObject.transform.LookAt(new Vector3(player.transform.position.x, pendingObject.transform.position.y, player.transform.position.z));
         }
+         Debug.DrawRay(mCamera.transform.position, mCamera.transform.forward * 100, Color.red);
+
     }
 
     public void SelectObject(int index)
