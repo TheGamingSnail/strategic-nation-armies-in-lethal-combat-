@@ -5173,6 +5173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_: {fileID: 0}
+  isCannon: 0
   isMelee: 0
   attacksOwnTeam: 0
   range: 50
@@ -5539,7 +5540,7 @@ MonoBehaviour:
   bulTrail: {fileID: 8021346661384018472, guid: 260e350bd17f17e4bbe872ca1adacd2d, type: 3}
   bulSpawnPos: {fileID: 368221703582968238}
   trailTime: 0
-  BulletSpreadVariance: {x: 0.06, y: 0.06, z: 0.06}
+  BulletSpreadVariance: {x: 0.04, y: 0.04, z: 0.04}
   AddBulletSpread: 1
   BulletSpeed: 100
   impactEffect: {fileID: 0}

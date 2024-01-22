@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class BallLauncher : MonoBehaviour {
+public class BetterProjectileLogic : MonoBehaviour {
 
 	[SerializeField] private Rigidbody ball;
 	[SerializeField] private Transform target;

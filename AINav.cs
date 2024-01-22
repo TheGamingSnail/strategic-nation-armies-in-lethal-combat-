@@ -385,7 +385,7 @@ public class AINav : MonoBehaviour
                         closest = gobj;
                     }
                 }
-                if(checkedAmount > gos.Length + 1)
+                if(checkedAmount > gos.Length)
                 {
                     return null;
                 }
@@ -401,5 +401,4 @@ public class AINav : MonoBehaviour
         }
         return closest;
     }
-    
 }

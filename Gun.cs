@@ -77,6 +77,7 @@ public class Gun : MonoBehaviour{
 
         RaycastHit hit;
         Vector3 direction = GetDirection();
+        UnityEngine.Debug.Log(direction);
         if (fpscamera)
         {
             if (Physics.Raycast(fpscamera.transform.position, direction, out hit, range))
@@ -90,7 +91,7 @@ public class Gun : MonoBehaviour{
         }
         else if (shooter)
         {
-            if (Physics.Raycast(shooter.position, shooter.forward, out hit, range))
+            if (Physics.Raycast(shooter.position, direction, out hit, range))
             {
                 StartCoroutine(DrawTrail(hit.point, hit.normal, hit));
             }
