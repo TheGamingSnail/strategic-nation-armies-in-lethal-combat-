@@ -467,7 +467,7 @@ MonoBehaviour:
   isCannon: 0
   isMelee: 0
   attacksOwnTeam: 0
-  range: 50
+  range: 75
   attackTime: 0.1
   checkTime: 1
   attDamage: 25

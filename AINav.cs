@@ -45,19 +45,20 @@ public class AINav : MonoBehaviour
     // Update is called once per frame
     void navUpdate()
     {
+        GameObject closEnemy = FindClosestEnemy();
         if (attBuilding && !attBuilding.GetComponent<Target>())
         {
             navMeshAgent.isStopped = false;
             attacking = false;
-            if (FindClosestEnemy())
+            if (closEnemy)
             {
-                navMeshAgent.destination = FindClosestEnemy().transform.position;
+                navMeshAgent.destination = closEnemy.transform.position;
             }
             if (victimIsRand)
             {
-                if (FindClosestEnemy())
+                if (closEnemy)
                 {
-                    attBuilding = FindClosestEnemy();
+                    attBuilding = closEnemy;
                 }
             }
         }
@@ -66,25 +67,25 @@ public class AINav : MonoBehaviour
         {
             navMeshAgent.isStopped = false;
             attacking = false;
-            if (FindClosestEnemy())
+            if (closEnemy)
             {
-                navMeshAgent.destination = FindClosestEnemy().transform.position;
+                navMeshAgent.destination = closEnemy.transform.position;
             }
             
         }
-        if (!foundEnemy && FindClosestEnemy())
+        if (!foundEnemy && closEnemy)
         {
-            if (isMelee || Vector3.Distance(transform.position, FindClosestEnemy().transform.position) > range)
+            if (isMelee || Vector3.Distance(transform.position, closEnemy.transform.position) > range)
             {
                 navMeshAgent.isStopped = false;
                 attacking = false;
-                navMeshAgent.destination = FindClosestEnemy().transform.position;
+                navMeshAgent.destination = closEnemy.transform.position;
             }
             
         }
-        if (FindClosestEnemy())
+        if (closEnemy)
         {
-            if (!isMelee && Vector3.Distance(transform.position, FindClosestEnemy().transform.position) <= range)
+            if (!isMelee && Vector3.Distance(transform.position, closEnemy.transform.position) <= range)
                 {
                     RaycastHit hit;
                     if (Physics.Raycast(transform.position, transform.forward, out hit, range))
@@ -96,7 +97,7 @@ public class AINav : MonoBehaviour
                                 navMeshAgent.destination = transform.position;
                                 attacking = true;
                                 navMeshAgent.isStopped = true;
-                                attBuilding = FindClosestEnemy();
+                                attBuilding = closEnemy;
                                 transform.LookAt(new Vector3(attBuilding.transform.position.x, 0, attBuilding.transform.position.z));
                                 // Quaternion OriginalRot = transform.rotation;
                                 // transform.LookAt(attBuilding.transform);
@@ -109,14 +110,14 @@ public class AINav : MonoBehaviour
                                 navMeshAgent.destination = transform.position;
                                 attacking = true;
                                 navMeshAgent.isStopped = true;
-                                attBuilding = FindClosestEnemy();
+                                attBuilding = closEnemy;
                                 transform.LookAt(new Vector3(attBuilding.transform.position.x, 0, attBuilding.transform.position.z));
                             }
                             else
                             {
                                 navMeshAgent.isStopped = false;
                                 attacking = false;
-                                navMeshAgent.destination = FindClosestEnemy().transform.position;
+                                navMeshAgent.destination = closEnemy.transform.position;
                             }
                             
                         }
@@ -125,7 +126,7 @@ public class AINav : MonoBehaviour
                             navMeshAgent.destination = transform.position;
                             attacking = true;
                             navMeshAgent.isStopped = true;
-                            attBuilding = FindClosestEnemy();
+                            attBuilding = closEnemy;
                             transform.LookAt(new Vector3(attBuilding.transform.position.x, 0, attBuilding.transform.position.z));
                         }
                     }
@@ -135,11 +136,11 @@ public class AINav : MonoBehaviour
                 // {
                 //     navMeshAgent.isStopped = true;
                 // }
-            if (!isMelee && Vector3.Distance(transform.position, FindClosestEnemy().transform.position) > range)
+            if (!isMelee && Vector3.Distance(transform.position, closEnemy.transform.position) > range)
             {
                 navMeshAgent.isStopped = false;
                 attacking = false;
-                navMeshAgent.destination = FindClosestEnemy().transform.position;
+                navMeshAgent.destination = closEnemy.transform.position;
             }
         }
 
@@ -179,9 +180,9 @@ public class AINav : MonoBehaviour
                 rpg.FireLauncher();
                 if (victimIsRand)
                 {
-                    if (FindClosestEnemy())
+                    if (closEnemy)
                     {
-                        attBuilding = FindClosestEnemy();
+                        attBuilding = closEnemy;
                     }
                 }
             }
@@ -204,20 +205,20 @@ public class AINav : MonoBehaviour
                     heldThrowable = newThrowable;
                     if (victimIsRand)
                     {
-                        if (FindClosestEnemy())
+                        if (closEnemy)
                         {
-                            if (FindClosestEnemy() != attBuilding)
+                            if (closEnemy != attBuilding)
                             {
-                                attBuilding = FindClosestEnemy();
+                                attBuilding = closEnemy;
                             }
                         }
                     }
                 }
             }
             
-            if (!attBuilding && FindClosestEnemy() && !isMelee)
+            if (!attBuilding && closEnemy && !isMelee)
             {
-                navMeshAgent.destination = FindClosestEnemy().transform.position;
+                navMeshAgent.destination = closEnemy.transform.position;
             }
         }
         else if (foundEnemy && !isMelee && fireWhenFound)
@@ -228,25 +229,25 @@ public class AINav : MonoBehaviour
                 gunScript.Shoot(attDamage);
                 if (victimIsRand)
                 {
-                    if (FindClosestEnemy())
+                    if (closEnemy)
                     {
-                        navMeshAgent.destination = FindClosestEnemy().transform.position;
-                        attBuilding = FindClosestEnemy();
+                        navMeshAgent.destination = closEnemy.transform.position;
+                        attBuilding = closEnemy;
                     }
                 }
                 navMeshAgent.destination = transform.position;
                 attacking = true;
                 navMeshAgent.isStopped = true;
-                attBuilding = FindClosestEnemy();
+                attBuilding = closEnemy;
                 transform.LookAt(new Vector3(attBuilding.transform.position.x, 0, attBuilding.transform.position.z));
             }
         }
         
 
-        if (Time.time >= time2 && FindClosestEnemy())
+        if (Time.time >= time2 && closEnemy)
         {
             time2 = Time.time + checkTime;
-            navMeshAgent.destination = FindClosestEnemy().transform.position;
+            navMeshAgent.destination = closEnemy.transform.position;
         }
         
     }
