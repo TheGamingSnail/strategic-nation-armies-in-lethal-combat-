@@ -35,9 +35,14 @@ public class AINav : MonoBehaviour
 
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
     // Start is called before the first frame update
-    void Fight()
+
+    void Start()
     {
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+    }
+    void Fight()
+    {
+        // navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         fighting = !fighting;
         
     }
@@ -45,6 +50,7 @@ public class AINav : MonoBehaviour
     // Update is called once per frame
     void navUpdate()
     {
+        float distToEnem = Vector3.Distance(transform.position, closEnemy.transform.position);
         GameObject closEnemy = FindClosestEnemy();
         if (attBuilding && !attBuilding.GetComponent<Target>())
         {
@@ -75,7 +81,7 @@ public class AINav : MonoBehaviour
         }
         if (!foundEnemy && closEnemy)
         {
-            if (isMelee || Vector3.Distance(transform.position, closEnemy.transform.position) > range)
+            if (isMelee || distToEnem > range)
             {
                 navMeshAgent.isStopped = false;
                 attacking = false;
@@ -85,7 +91,7 @@ public class AINav : MonoBehaviour
         }
         if (closEnemy)
         {
-            if (!isMelee && Vector3.Distance(transform.position, closEnemy.transform.position) <= range)
+            if (!isMelee && distToEnem <= range)
                 {
                     RaycastHit hit;
                     if (Physics.Raycast(transform.position, transform.forward, out hit, range))
@@ -105,7 +111,7 @@ public class AINav : MonoBehaviour
                                 // transform.rotation = OriginalRot;
                                 // transform.rotation = Quaternion.Lerp(transform.rotation, NewRot, m_Speed * Time.deltaTime);
                             }
-                            else if(transform.tag == "TestUnit")
+                            else if(transform.CompareTag("TestUnit"))
                             {
                                 navMeshAgent.destination = transform.position;
                                 attacking = true;
@@ -136,7 +142,7 @@ public class AINav : MonoBehaviour
                 // {
                 //     navMeshAgent.isStopped = true;
                 // }
-            if (!isMelee && Vector3.Distance(transform.position, closEnemy.transform.position) > range)
+            if (!isMelee && distToEnem > range)
             {
                 navMeshAgent.isStopped = false;
                 attacking = false;
