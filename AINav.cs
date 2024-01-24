@@ -50,8 +50,9 @@ public class AINav : MonoBehaviour
     // Update is called once per frame
     void navUpdate()
     {
-        float distToEnem = Vector3.Distance(transform.position, closEnemy.transform.position);
         GameObject closEnemy = FindClosestEnemy();
+        float distToEnem = Vector3.Distance(transform.position, closEnemy.transform.position);
+        
         if (attBuilding && !attBuilding.GetComponent<Target>())
         {
             navMeshAgent.isStopped = false;
